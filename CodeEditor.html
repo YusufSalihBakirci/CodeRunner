@@ -1,0 +1,72 @@
+<!doctype html>
+<html >
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js" integrity="sha512-pSVqGtpGygQlhN8ZTHXx1kqkjQr30eM+S6OoSzhHGTjh6DKdfy7WZlo1DNO9bhtM0Imf6xNLznZ7iVC2YUMwJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <meta charset="utf-8">
+  <title>Insider Code Editor </title>
+  <link rel="stylesheet" href="CodeEditor.css">
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="boxes">
+            <div class="topButtons">
+                <select id="ddlHistories" onchange="setData(this.value);">
+                    <option value="0" >Please Select</option>
+                </select>
+        <button id="saveCode" onclick="savePopupDesktop();">Save</button>
+            </div>
+        
+                    <div class="outputContainer">
+
+                    <div class="codeView"></div>
+                    </div>
+                    <div class="downCodeBox">
+                        <button class="minMax" onclick="changeView();">
+                            Minimized
+                        </button>
+                        <button class="runProject" onclick="runProject();">
+                            Run
+                        </button>
+
+                    </div>
+                    <div class="codeBoxes">
+                        <div id="code" class="HTML-box">
+                            <p class="boxHeader">HTML</p>
+                            <div style="height: 200px;">
+                                <textarea placeholder="Enter HTML Source Code" id="editing" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+                                <pre id="highlighting" class="highlightingHTML" aria-hidden="true">
+                                <code class="language-html" id="highlighting-content-html">
+                                </code>
+                                </pre>
+                                </div>
+                        </div>
+                        <div id="code" class="CSS-box">
+                             <p class="boxHeader">CSS</p>   
+                            <div style="height: 200px;">
+                                <textarea placeholder="Enter CSS Source Code" class="editing-css" id="editing" spellcheck="false" oninput="updateCss(this.value); sync_scrollCss(this);" onscroll="sync_scrollCss(this);" onkeydown="check_tab(this, event);"></textarea>
+                                <pre id="highlighting"  class="highlightingCss" aria-hidden="true">
+                                <code class="language-css" id="highlighting-content-css">
+                                </code>
+                                </pre>
+                                </div>  
+                        </div>
+                        <div id="code" class="JS-box">
+                            <p class="boxHeader">JavaScript</p>
+                             <div style="height: 200px;">
+                                <textarea placeholder="Enter JavaScript Source Code" id="editing"  class="editing-js" spellcheck="false" oninput="updateJs(this.value); sync_scrollJs(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+                                <pre id="highlighting" class="highlightingJs" aria-hidden="true">
+                                <code class="language-js" id="highlighting-content-js">
+                                </code>
+                                </pre>
+                                </div> 
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+</body>
+<script src="CodeEditor.js"></script>
+<script src="savePopup.js"></script>
+</html>
